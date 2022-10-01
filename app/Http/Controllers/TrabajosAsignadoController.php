@@ -21,7 +21,7 @@ class TrabajosAsignadoController extends Controller
     {
         $trabajos_asignados = trabajosAsignado::userCLiente()->get();
         /* dd($trabajos_asignados); */
-        return view('trabajos_asignados.index',compact('trabajos_asignados'));
+        return view('Trabajos_asignados.index',compact('trabajos_asignados'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TrabajosAsignadoController extends Controller
         $trabajos = trabajo::all();
         $horas = hora::all();
         
-        return view('trabajos_asignados.crear',compact('clientes','tecnicos','trabajos','horas'));
+        return view('Trabajos_asignados.crear',compact('clientes','tecnicos','trabajos','horas'));
     }
 
     /**
@@ -122,7 +122,7 @@ class TrabajosAsignadoController extends Controller
         $trabajos = trabajo::all();
         $horas = hora::all();
         
-        return view('trabajos_asignados.edit',compact('old_cliente','trabajo_asignado','clientes','tecnicos','trabajos','horas'));
+        return view('Trabajos_asignados.edit',compact('old_cliente','trabajo_asignado','clientes','tecnicos','trabajos','horas'));
     }
 
     /**

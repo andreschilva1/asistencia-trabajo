@@ -17,7 +17,7 @@ class TrabajoAsignadoClienteController extends Controller
     public function index()
     {
         $trabajos_asignados = trabajosAsignado::userActualCLientes()->get();
-        return view('trabajos_asignados_tecnicos.index',compact('trabajos_asignados'));
+        return view('Trabajos_asignados_tecnicos.index',compact('trabajos_asignados'));
     }
 
     /**
@@ -50,7 +50,7 @@ class TrabajoAsignadoClienteController extends Controller
     public function show(trabajosAsignado $trabajo_asignado)
     {
         $cliente = User::find($trabajo_asignado->clientes_id);
-        return view('trabajos_asignados_tecnicos.show',compact('trabajo_asignado','cliente'));
+        return view('Trabajos_asignados_tecnicos.show',compact('trabajo_asignado','cliente'));
     }
 
     /**

@@ -27,7 +27,7 @@ class TrabajoController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('trabajos.crear', compact('categorias'));
+        return view('Trabajos.crear', compact('categorias'));
     }
 
     /**
@@ -73,7 +73,7 @@ class TrabajoController extends Controller
     public function edit(trabajo $trabajo)
     {
         $categorias = categoria::all();
-        return view('trabajos.edit',compact('trabajo','categorias'));
+        return view('Trabajos.edit',compact('trabajo','categorias'));
     }
 
     /**
