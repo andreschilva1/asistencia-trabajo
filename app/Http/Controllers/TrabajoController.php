@@ -16,7 +16,7 @@ class TrabajoController extends Controller
     public function index()
     {
         $trabajos = Trabajo::all();
-        return view('trabajos.index',compact('trabajos'));
+        return view('Trabajos.index',compact('trabajos'));
     }
 
     /**
