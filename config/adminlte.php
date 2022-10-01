@@ -405,6 +405,22 @@ return [
             'can' => 'Gestionar Mis Trabajos Asignados',
         ],
 
+      /*   [
+            'text'       => 'Lista de Asistencia',
+            'icon' => 'fas fa-plus-circle',
+            'icon_color' => 'yellow',
+            'route'        => 'trabajos_asignados_tecnicos.index',
+            'can' => 'Gestionar Mis Trabajos Asignados',
+        ], */
+
+        /* [
+            'text'       => 'Mi Asistencia',
+            'icon' => 'fas fa-plus-circle',
+            'icon_color' => 'yellow',
+            'route'        => 'trabajos_asignados_tecnicos.index',
+            'can' => 'Gestionar Mis Trabajos Asignados',
+        ], */
+
     ],
 
     /*

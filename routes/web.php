@@ -54,7 +54,7 @@ Route::get('trabajos_asignados_tecnicos/{trabajo_asignado}/show', [App\Http\Cont
 //control de asistencia 
 Route::post('control_asistencias/{trabajo_asignado}/create',[App\Http\Controllers\ControlAsistenciaController::class,'create'])->name('control_asistencias.create');
 
-Route::get('perfil/', [App\Http\Controllers\PerfilController::class, 'index'])/* ->middleware('can:Gestionar Perfil') */->name('perfil.index');
+Route::get('perfil/', [App\Http\Controllers\PerfilController::class, 'index'])->middleware('can:Gestionar Perfil')->name('perfil.index');
 
 Route::get('users/prueba', function () {
     $users = User::all();    
