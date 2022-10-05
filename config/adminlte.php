@@ -171,12 +171,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'bg-gradient-dark',
+    'classes_auth_card' => 'card-outline card-info',
     'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-gradient-dark',
-    'classes_auth_footer' => 'text-center',
-    'classes_auth_icon' => 'fa-fw text-light',
-    'classes_auth_btn' => 'btn-flat btn-light',
+    'classes_auth_body' => '',
+    'classes_auth_footer' => '',
+    'classes_auth_icon' => 'fa-lg text-info',
+    'classes_auth_btn' => 'btn-flat btn-info',
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'Perfil/index',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -298,7 +298,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -354,12 +354,12 @@ return [
                     'can' => 'Gestionar Roles',
                 ],
 
-                [
+                /* [
                     'text' => 'Bitacora',
                     'icon' => 'fas fa-book fa-fw',
                     'url'  => '#',
                     'can' => 'Gestionar Bitacora',
-                ],
+                ], */
                 
 
             ],
@@ -367,19 +367,21 @@ return [
         
         ['header' => 'Procesos de Trabajo'],
         
-        /* [
+        [
             'text'       => 'Horarios',
-            'icon' => 'fas fa-briefcase',
-            'icon_color' => 'red',
-            'url'  => '#',
+            'icon' => 'fas fa-clock',
+            'icon_color' => 'black',
+            'route'  => 'horas.index',
+            'can' => 'Gestionar Horas',
         ],
 
         [
             'text'       => 'Categorias',
-            'icon' => 'fas fa-briefcase',
-            'icon_color' => 'red',
-            'url'  => '#',
-        ], */
+            'icon' => 'fas fa-tasks',
+            'icon_color' => 'black',
+            'route'  => 'categorias.index',
+            'can' => 'Gestionar Categorias',
+        ],
 
         [
             'text'       => 'Trabajos',
@@ -390,7 +392,7 @@ return [
         ],
 
         [
-            'text'       => 'Asignar Trabajos',
+            'text'       => 'Trabajos Asignados',
             'icon' => 'fas fa-plus-circle',
             'icon_color' => 'yellow',
             'route'        => 'trabajos_asignados.index',
@@ -405,13 +407,22 @@ return [
             'can' => 'Gestionar Mis Trabajos Asignados',
         ],
 
-      /*   [
-            'text'       => 'Lista de Asistencia',
+        [
+            'text'       => 'Trabajos completados',
             'icon' => 'fas fa-plus-circle',
-            'icon_color' => 'yellow',
-            'route'        => 'trabajos_asignados_tecnicos.index',
-            'can' => 'Gestionar Mis Trabajos Asignados',
-        ], */
+            'icon_color' => 'black',
+            'route'        => 'trabajos_completados.index',
+            'can' => 'Gestionar Trabajos Completados',
+        ],
+
+        [
+            'text'       => 'Mis Trabajos completados',
+            'icon' => 'fas fa-plus-circle',
+            'icon_color' => 'black',
+            'route'        => 'trabajos_completados_tecnicos.index',
+            'can' => 'Gestionar Mis Trabajos Completados',
+            
+        ],
 
         /* [
             'text'       => 'Mi Asistencia',

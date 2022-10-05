@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label for="latitud">Latitud</label>
                                     <input type="text" name="latitud" id="latitud" class="form-control" value="" >
-                                    <input type="number" name="latitud2" id="latitud2" class="form-control" value="{{$trabajo_asignado->latitud}}" >                                    @error('latitud')
+                                    <input type="number" name="latitud_cliente" id="latitud2" class="form-control" value="{{$trabajo_asignado->latitud}}" >                                    @error('latitud')
                                         <small>*{{ $message }}</small>
                                         <br><br>
                                     @enderror
@@ -100,11 +100,13 @@
                                 <div class="form-group">
                                     <label for="longitud">Longitud</label>
                                     <input type="text" name="longitud" id="longitud" class="form-control" value="" >
-                                    <input type="number" name="longitud2" id="longitud2" class="form-control" value="{{$trabajo_asignado->longitud}}" >
+                                    <input type="number" name="longitud_cliente" id="longitud2" class="form-control" value="{{$trabajo_asignado->longitud}}" >
+                                    <input type="text" name="es_ubicacion_cercana" id="es_ubicacion_cercana" class="form-control" value = "0">
                                     @error('longitud')
                                         <small>*{{ $message }}</small>
                                         <br><br>
                                     @enderror
+                                    
                                 </div>
                             </div>
                         </div>
@@ -122,7 +124,7 @@
                     @if ($trabajo_asignado->estado == 'Asignado')
                         <button type="submit" class="btn btn-dark btn-lg" id="btn1" disabled >Comenzar</button>  
                     @elseif($trabajo_asignado->estado == 'En Proceso')
-                            <button type="submit" class="btn btn-danger btn-lg" id="Terminar" >Terminar</button>
+                            <button type="submit" class="btn btn-danger btn-lg" id="btn1" disabled>Terminar</button>
                         
                     @endif
 
@@ -165,7 +167,7 @@ function initMap() {
 
   const svgMarker = {
     path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-    fillColor: "lightBlue",
+    fillColor: "blue",
     fillOpacity: 0.6,
     strokeWeight: 0,
     rotation: 0,
@@ -191,6 +193,7 @@ function initMap() {
 const locationButton = document.getElementById("btn2");
 const buttonComenzar = document.getElementById('btn1');
 const comprobarCercania = document.getElementById('btn3');
+const esUbicacionCercana = document.getElementById('es_ubicacion_cercana');
 
 
   locationButton.textContent = "Obtener Mi Ubicacion";
@@ -253,6 +256,7 @@ const comprobarCercania = document.getElementById('btn3');
 comprobarCercania.addEventListener("click",function (event) {
     if (compararUbicaciones(latCliente,longCliente,mark.getPosition().lat(),mark.getPosition().lng(), 0.002)) {
             buttonComenzar.disabled = false;
+            esUbicacionCercana.value = 1;
           }
 });
   

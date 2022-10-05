@@ -48,8 +48,8 @@
                 <!-- Logo of the page -->
                 <div class="logo">
                     <a href="#">
-                        <img src="{{ asset('assets/images/ONLIWYELW.png')}}" alt="Mono" class="light img-responsive " width="150" height="150">
-                        <img src="{{ asset('assets/images/ONLIWYELW_DARK.png')}}" alt="mono" class="dark img-responsive " width="150" height="150">
+                        <img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="Mono" class="light img-responsive " width="150" height="150">
+                        <img src="{{ asset('assets/images/servitecLogoDark.png')}}" alt="mono" class="dark img-responsive " width="150" height="150">
                     </a>
                 </div>
                 <!-- Logo of the page end -->
@@ -69,9 +69,9 @@
                             @auth
                                 <a href="{{ url('/home') }}" class="btn btn-default btn-white"">Cuenta</a>
                             @else
-                                @if (Route::has('register'))
+                                {{-- @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="btn btn-default btn-white" >Register</a>  
-                                @endif
+                                @endif --}}
                                 <a href="{{ route('login') }}" class="btn btn-default btn-white" >Log in</a>
                                 
                             @endauth
@@ -81,11 +81,11 @@
                     
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ url('/') }}" {{-- data-scroll-nav="0" --}}>Home</a></li>
+                            <li><a href="{{ url('/') }}" {{-- data-scroll-nav="0" --}}>INICIO</a></li>
                             
-                            <li><a href="#" {{-- data-scroll-nav="2" --}}>about</a></li>
+                            <li><a href="#" {{-- data-scroll-nav="2" --}}>SOBRE</a></li>
                             <li><a href="#" {{-- data-scroll-nav="3" --}}>Video Block</a></li>
-                            <li><a href="#" {{-- data-scroll-nav="4" --}}>Free Trials</a></li>
+                            <li><a href="#" {{-- data-scroll-nav="4" --}}></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -96,16 +96,16 @@
     <!-- Main of the page -->
     <main id="main">
         <!-- Hero area of the page -->
-        <section class="hero-area text-center overlay" style="background-image: url(assets/images/avion.jpg);" data-scroll-index="0">
+        <section class="hero-area text-center overlay" style="background-image: url(assets/images/antena.jpg);" data-scroll-index="0">
             <div id="particles-js"></div>
 				<div class="container">
 					<div class="row">
 						<header class="heading-holder col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 							{{-- <h1><span class="text-small"></span>IMPORTADORA ONLIBO!</h1> --}}
 							<div class="aligncenter">
-								<img src="{{ asset('assets/images/LOGOVAR.png')}}" alt="image description m-top" class="img-responsive" width="400" height="400">
+								<img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="image description m-top" class="img-responsive" width="700" height="400">
 							</div>
-							<p>Desde 3$ cada 100 gramos.</p>
+							<p></p>
 						</header>
 					</div>
 					
@@ -115,7 +115,7 @@
 		<section class="features-area container" data-scroll-index="1">
 			<div class="row">
 				<header class="col-xs-12 heading-wrap col-sm-6 col-sm-offset-3 text-center">
-					<h2>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING.</h2>
+					<h2>OFRECEMOS SOLUCIONES PARA EMPRESAS DE TELECOMUNICACIONES.</h2>
 				</header>
 			</div>
 			<!-- Features of the page -->
@@ -167,7 +167,7 @@
 		</section>
 		<!-- Features area of the page end -->
 		<!-- Demo block of the page -->
-		<aside class="demo-block">
+		{{-- <aside class="demo-block">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-md-7">
@@ -216,20 +216,20 @@
 				</div>
 				<!-- img holder of the page end -->
 			</div>
-		</section>
+		</section> --}}
 		<!-- Product Features of the page end -->
 		<!-- Video block of the page -->
-		<aside class="video-block" data-scroll-index="3">
+		{{-- <aside class="video-block" data-scroll-index="3">
 			<div class="video overlay">
 				<img src="{{ asset('assets/images/2600-430.jpg')}}" alt="image description" class="img-responsive">
 				<a href="https://www.youtube.com/watch?v=XjDh_5ZH9wQ?autoplay=1" class="ico-play lightbox fancybox.iframe"></a>
 			</div>
-		</aside>
+		</aside> --}}
 		<!-- Video block of the page end -->
 
 
 		<!-- Trial block of the page -->
-		<section class="trial-block container" data-scroll-index="4">
+		{{-- <section class="trial-block container" data-scroll-index="4">
 			<div class="row">
 				<div class="alignleft">
 					<img src="{{ asset('assets/images/665.jpg')}}" alt="image description" class="img-responsive">
@@ -269,7 +269,7 @@
 					<!-- Logos list of the page end -->
 				</div>
 			</div>
-		</aside>
+		</aside> --}}
     
     </main>
     @yield('content')
@@ -279,8 +279,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 text-center col-sm-6 col-sm-offset-3">
-						<div class="logo"><a href="#"><img src="{{ asset('assets/images/logo.svg')}}" alt="mono"></a></div>
-						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis imperdiet egestas.</p>
+						<div class="logo"><a href="#"><img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="mono"></a></div>
+						<p></p>
 						<!-- Social Networks of the page -->
 						<ul class="social-networks">
 							<li><a href="#"><span class="icon ico-facebook"></span></a></li>
@@ -298,7 +298,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
-					<p>&copy; Copyright 2021, <a class="white" href="https://gridgum.com">GRIDGUM</a>. <br>All Rights Reserved</p>
+					<p>&copy; Copyright 2022, <a class="white" href="https://gridgum.com">UAGRM</a>. <br>All Rights Reserved</p>
 				</div>
 			</div>
 		</div>

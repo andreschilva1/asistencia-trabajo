@@ -14,7 +14,8 @@ class HoraController extends Controller
      */
     public function index()
     {
-        //
+        $horas = hora::all();
+        return view('Horarios.index',compact('horas'));
     }
 
     /**
@@ -24,7 +25,7 @@ class HoraController extends Controller
      */
     public function create()
     {
-        //
+        return view('Horarios.crear');
     }
 
     /**
@@ -33,9 +34,20 @@ class HoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function insertar(Request $request)
     {
-        //
+        $request->validate([
+            'hora_inicio' => 'required',
+            'hora_final' => 'required',
+
+        ]);
+
+        $hora = new hora();
+        $hora->horaInicio = $request->hora_inicio;
+        $hora->horaFin = $request->hora_final;
+        $hora->save();
+        
+        return redirect()->route('horas.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class HoraController extends Controller
      */
     public function edit(hora $hora)
     {
-        //
+        return view('Horarios.edit',compact('hora'));
     }
 
     /**
@@ -69,7 +81,16 @@ class HoraController extends Controller
      */
     public function update(Request $request, hora $hora)
     {
-        //
+        $request->validate([
+            'hora_inicio' => 'required',
+            'hora_final' => 'required',
+        ]);
+
+        $hora->horaInicio = $request->hora_inicio;
+        $hora->horaFin = $request->hora_final;
+        $hora->save();
+        
+        return redirect()->route('horas.index');
     }
 
     /**
@@ -80,6 +101,7 @@ class HoraController extends Controller
      */
     public function destroy(hora $hora)
     {
-        //
+        $hora->delete();
+        return redirect()->route('horas.index');
     }
 }

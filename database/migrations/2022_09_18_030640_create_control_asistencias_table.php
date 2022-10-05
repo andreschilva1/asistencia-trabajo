@@ -18,6 +18,8 @@ class CreateControlAsistenciasTable extends Migration
             $table->unsignedBigInteger('trabajos_asignados_id');
             $table->time('horaInicio');
             $table->time('horaFin')->default('00:00:00');
+            $table->string('latitud');
+            $table->string('longitud');
             $table->timestamps();
             $table->foreign('trabajos_asignados_id')->on('trabajos_asignados')->references('id');
         });

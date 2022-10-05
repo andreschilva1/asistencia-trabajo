@@ -14,7 +14,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = categoria::all();
+        return view('Categorias.index',compact('categorias'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Categorias.crear');
     }
 
     /**
@@ -33,9 +34,20 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function insertar(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+
+        ]);
+
+        $categoria = new categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+        
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class CategoriaController extends Controller
      */
     public function edit(categoria $categoria)
     {
-        //
+        return view('Categorias.edit',compact('categoria'));
     }
 
     /**
@@ -69,7 +81,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, categoria $categoria)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+
+        ]);
+
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+        
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -80,6 +102,7 @@ class CategoriaController extends Controller
      */
     public function destroy(categoria $categoria)
     {
-        //
+        $categoria->delete();
+        return redirect()->route('categorias.index');
     }
 }

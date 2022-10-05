@@ -35,10 +35,7 @@
                 <label for="password">Nueva  contraseña</label>
                 <input type="checkbox" name="activar-contraseña" id="check_password" onclick="cambiarEstado()" >
                         <input type="password" name="password" class="form-control" value="{{old('password')}}" id="passwordInput" placeholder="Escriba la nueva contraseña" disabled>
-                @error('password')
-                    <small>*{{ $message }}</small>
-                    <br><br>
-                @enderror
+
                 <br>
 
 
@@ -78,10 +75,8 @@
         }
 
         
-    }
-    
-
-        
+        }
+       
     </script>
 @stop
 

@@ -9,4 +9,6 @@ class controlAsistencia extends Model
 {
     use HasFactory;
     protected $table = 'control_asistencias';
+
+    
 }

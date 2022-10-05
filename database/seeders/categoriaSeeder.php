@@ -16,6 +16,7 @@ class categoriaSeeder extends Seeder
     {
         $trabajo = new categoria(); 
         $trabajo->nombre="Instalacion";
+        $trabajo->descripcion = "todo tipo de servicio de instalacion a domicilio";
         $trabajo->save();
     }
 }

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'trabajos_asignados_tecnicos')
+@section('title', 'trabajos_completados')
 
 @section('content_header')
-    <h1>Mis Trabajos Asignados</h1>
+    <h1>Trabajos Completados</h1>
 @stop
 
 @section('css')
@@ -16,9 +16,7 @@
 
 
 @section('content')
-   {{--  <div class="card">
-        
-    </div> --}}
+
 
     <div class="card">
         <div class="card-header ">
@@ -31,34 +29,27 @@
                         <th>Trabajo</th>
                         <th>Cliente</th>
                         <th>Tecnico</th>
-                        <th>Fecha Programada</th>
-                        <th>Hora de Inicio</th>
+                        <th>Fecha </th>
+                        <th>hora Inicio</th>
                         <th>Hora Fin</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                 </thead>
                 <tbody>
-                    @foreach ($trabajos_asignados as $trabajo_asignado)
+                    @foreach ($trabajos_completados as $trabajo_completado)
                         <tr>
-                            <td>{{ $trabajo_asignado->trabajos->nombre }}</td>
-                            <td>{{ $trabajo_asignado->name }}</td>
-                            <td>{{ $trabajo_asignado->users->name }}</td>
-                            <td>{{ $trabajo_asignado->Fecha}}</td>
-                            <td>{{ $trabajo_asignado->horas->horaInicio }}</td>
-                            <td>{{ $trabajo_asignado->horas->horaFin}}</td>
+                            <td>{{ $trabajo_completado->trabajos->nombre }}</td>
+                            <td>{{ $trabajo_completado->name }}</td>
+                            <td>{{ $trabajo_completado->users->name }}</td>
+                            <td>{{ $trabajo_completado->Fecha}}</td>
+                            <td>{{ $trabajo_completado->control_asistencias->horaInicio }}</td>
+                            <td>{{ $trabajo_completado->control_asistencias->horaFin}}</td>
                             <td>
-                                @if ($trabajo_asignado->estado == "Asignado")
-                                    <button class="btn btn-warning btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
-                                @elseif($trabajo_asignado->estado == "En Proceso")
-                                    <button class="btn btn-danger btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
-                                @elseif($trabajo_asignado->estado == "Completado")
-                                    <button class="btn btn-success btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
-                                @endif
-                                
+                                <button class="btn btn-success btn-sm" disabled>{{ $trabajo_completado->estado}}</button>
                             </td>
                             <td>
 
-                                <a href="{{route('trabajos_asignados_tecnicos.show', $trabajo_asignado)}}" class="btn btn-dark btn-sm">Ver Detalles<a>
+                                <a href="{{route('trabajos_completados.show', $trabajo_completado)}}" class="btn btn-dark btn-sm">Ver Detalles<a>
 
                             </td>
                         </tr>

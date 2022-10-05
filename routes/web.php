@@ -54,9 +54,36 @@ Route::get('trabajos_asignados_tecnicos/{trabajo_asignado}/show', [App\Http\Cont
 //control de asistencia 
 Route::post('control_asistencias/{trabajo_asignado}/create',[App\Http\Controllers\ControlAsistenciaController::class,'create'])->name('control_asistencias.create');
 
-Route::get('perfil/', [App\Http\Controllers\PerfilController::class, 'index'])->middleware('can:Gestionar Perfil')->name('perfil.index');
 
-Route::get('users/prueba', function () {
-    $users = User::all();    
-    return view('users.prueba', compact('users'));
-})->name('prueba');
+
+//perfil
+Route::get('perfil/', [App\Http\Controllers\PerfilController::class, 'index'])->middleware('can:Gestionar Perfil')->name('perfil.index');
+Route::put('perfil/{user}/update', [App\Http\Controllers\PerfilController::class, 'update'])->middleware('can:Gestionar Perfil')->name('perfil.update');
+
+//notificaciones
+Route::get('notificaciones/', [App\Http\Controllers\notificacionController::class, 'index'])->middleware('can:Gestionar Notificaciones')->name('notificaciones.index');
+Route::get('markAsRead', [App\Http\Controllers\notificacionController::class, 'marcarTodasLeidas'])->middleware('can:Gestionar Notificaciones')->name('notificaciones.markAsRead');
+
+//trabajos completados
+Route::get('trabajos_completados/',[App\Http\Controllers\trabajosCompletadosController::class,'index'])->middleware('can:Gestionar Trabajos Completados')->name('trabajos_completados.index');
+Route::get('trabajos_completados/{trabajo_completado}/show', [App\Http\Controllers\trabajosCompletadosController::class, 'show'])->middleware('can:Gestionar Trabajos Completados')->name('trabajos_completados.show');
+
+//trabajos completados tecnicos
+Route::get('trabajos_completados_tecnicos/',[App\Http\Controllers\trabajoCompletadoTecnicoController::class,'index'])->middleware('can:Gestionar Mis Trabajos Completados')->name('trabajos_completados_tecnicos.index');
+Route::get('trabajos_completados_tecnicos/{trabajo_completado}/show', [App\Http\Controllers\trabajoCompletadoTecnicoController::class, 'show'])->middleware('can:Gestionar Mis Trabajos Completados')->name('trabajos_completados_tecnicos.show');
+
+//horas
+Route::get('horas/', [App\Http\Controllers\HoraController::class, 'index'])->middleware('can:Gestionar Horas')->name('horas.index');
+Route::get('horas/crear', [App\Http\Controllers\HoraController::class, 'create'])->middleware('can:Gestionar Horas')->name('horas.crear');
+Route::post('horas/insertar', [App\Http\Controllers\HoraController::class, 'insertar'])->middleware('can:Gestionar Horas')->name('horas.insertar');
+Route::get('horas/{hora}/edit', [App\Http\Controllers\HoraController::class, 'edit'])->middleware('can:Gestionar Horas')->name('horas.edit');
+Route::put('horas/{hora}/update', [App\Http\Controllers\HoraController::class, 'update'])->middleware('can:Gestionar Horas')->name('horas.update');
+Route::delete('horas/{hora}', [\App\Http\Controllers\HoraController::class,'destroy'])->middleware('can:Gestionar Horas')->name('horas.delete');
+
+//categorias
+Route::get('categorias/', [App\Http\Controllers\CategoriaController::class, 'index'])->middleware('can:Gestionar Categorias')->name('categorias.index');
+Route::get('categorias/crear', [App\Http\Controllers\CategoriaController::class, 'create'])->middleware('can:Gestionar Categorias')->name('categorias.crear');
+Route::post('categorias/insertar', [App\Http\Controllers\CategoriaController::class, 'insertar'])->middleware('can:Gestionar Categorias')->name('categorias.insertar');
+Route::get('categorias/{categoria}/edit', [App\Http\Controllers\CategoriaController::class, 'edit'])->middleware('can:Gestionar Categorias')->name('categorias.edit');
+Route::put('categorias/{categoria}/update', [App\Http\Controllers\CategoriaController::class, 'update'])->middleware('can:Gestionar Categorias')->name('categorias.update');
+Route::delete('categorias/{categoria}', [\App\Http\Controllers\CategoriaController::class,'destroy'])->middleware('can:Gestionar Categorias')->name('categorias.delete');

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\trabajo;
+use App\Models\trabajosAsignado;
 use App\Models\User;
-use Database\Seeders\users;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 
-class PerfilController extends Controller
+class trabajosCompletadosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('Perfil.index',compact('user'));
+        $trabajos_completados = trabajosAsignado::trabajosCompletados()->get();
+        return view('Trabajos_completados.index',compact('trabajos_completados'));
     }
 
     /**
@@ -48,9 +47,10 @@ class PerfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(trabajosAsignado $trabajo_completado)
     {
-        //
+        $cliente = User::find($trabajo_completado->clientes_id);
+        return view('Trabajos_completados.show',compact('trabajo_completado','cliente'));
     }
 
     /**
@@ -71,25 +71,9 @@ class PerfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombre'=>'required',
-            'email'=>'required',
-            
-        ]);
-
-        $user->name = $request->nombre;
-        $user->email = $request->email;
-        if($request->password <> ''){
-            $user->password = bcrypt(($request->password));
-        }
-        $user->celular = $request->celular;
-        $user->fecha_nacimiento = $request->fecha;
-        
-        $user->save();
-
-        return redirect()->back()->with('message','Datos actualizados correctamente');
+        //
     }
 
     /**

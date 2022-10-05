@@ -29,12 +29,26 @@ class trabajosAsignado extends Model
         return $this->belongsTo(hora::class);
     }
 
+  
+    public function control_asistencias()
+    {
+        return $this->hasOne(controlAsistencia::class,'trabajos_asignados_id');
+    }
+
+    
     //funciones normales
 
     // devuelve los trabajos y los datos de todos los clientes
-    public static function userCLiente()
+    public static function trabajosAsignados()
     {
-        return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->select('trabajos_asignados.*', 'users.name');
+        return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->select('trabajos_asignados.*', 'users.name')->
+        where('trabajos_asignados.estado','<>','Completado');
+    }
+
+    public static function trabajosCompletados()
+    {
+        return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->select('trabajos_asignados.*', 'users.name')->
+        where('trabajos_asignados.estado','Completado');
     }
 
     // devuelve los trabajos y los datos de todos los clientes
@@ -43,5 +57,12 @@ class trabajosAsignado extends Model
         $usuarioActual = Auth::user()->id;
         return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->
         select('trabajos_asignados.*', 'users.name')->where('tecnicos_id',$usuarioActual);
+    }
+
+    public static function trabajosCompletadosTecnicoActual()
+    {
+        $usuarioActual = Auth::user()->id;
+        return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->
+        select('trabajos_asignados.*', 'users.name')->where('tecnicos_id',$usuarioActual)->where('trabajos_asignados.estado','Completado');
     }
 }

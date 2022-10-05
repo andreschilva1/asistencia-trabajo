@@ -31,8 +31,10 @@ class roleSeeder extends Seeder
         $permission = Permission::create(['name' => 'Gestionar Categorias'])->syncRoles([$role1]);
         $permission = Permission::create(['name' => 'Gestionar Asignar Trabajos'])->syncRoles([$role1]);
         $permission = Permission::create(['name' => 'Gestionar Mis Trabajos Asignados'])->syncRoles([$role2]);
-        $permission = Permission::create(['name' => 'Control Asistencia'])->syncRoles([$role1]);
-        $permission = Permission::create(['name' => 'Mi Asistencia'])->syncRoles([$role2]);
+        $permission = Permission::create(['name' => 'Gestionar Trabajos Completados'])->syncRoles([$role1]);
+        $permission = Permission::create(['name' => 'Gestionar Mis Trabajos Completados'])->syncRoles([$role2]);
+        $permission = Permission::create(['name' => 'Gestionar Notificaciones'])->syncRoles([$role1,$role2]);
+        
         
         
         
