@@ -73,7 +73,11 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Estado</label>
-                            <input type="button" value="{{$trabajo_asignado->estado}}" name="estado" id="estado" class="form-control btn btn-danger" disabled>
+                            @if ($trabajo_asignado->estado == "Asignado")
+                                <input type="button" value="{{$trabajo_asignado->estado}}" name="estado" id="estado" class="form-control btn btn-warning" disabled>
+                            @elseif($trabajo_asignado->estado == "En Proceso")
+                                <input type="button" value="{{$trabajo_asignado->estado}}" name="estado" id="estado" class="form-control btn btn-danger" disabled>
+                             @endif
                             @error('estado')
                                 <small>*{{ $message }}</small>
                                 <br><br>
@@ -87,9 +91,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="latitud">Latitud</label>
-                                    <input type="text" name="latitud" id="latitud" class="form-control" value="" >
-                                    <input type="number" name="latitud_cliente" id="latitud2" class="form-control" value="{{$trabajo_asignado->latitud}}" >                                    @error('latitud')
+                                    <label for="latitud"></label>
+                                    <input type="text" name="latitud" id="latitud" class="form-control" value="" hidden>
+                                    <input type="number" name="latitud_cliente" id="latitud2" class="form-control" value="{{$trabajo_asignado->latitud}}" hidden>                                    @error('latitud')
                                         <small>*{{ $message }}</small>
                                         <br><br>
                                     @enderror
@@ -98,10 +102,10 @@
     
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="longitud">Longitud</label>
-                                    <input type="text" name="longitud" id="longitud" class="form-control" value="" >
-                                    <input type="number" name="longitud_cliente" id="longitud2" class="form-control" value="{{$trabajo_asignado->longitud}}" >
-                                    <input type="text" name="es_ubicacion_cercana" id="es_ubicacion_cercana" class="form-control" value = "0">
+                                    <label for="longitud"></label>
+                                    <input type="text" name="longitud" id="longitud" class="form-control" value="" hidden>
+                                    <input type="number" name="longitud_cliente" id="longitud2" class="form-control" value="{{$trabajo_asignado->longitud}}" hidden>
+                                    <input type="text" name="es_ubicacion_cercana" id="es_ubicacion_cercana" class="form-control" value = "0" hidden>
                                     @error('longitud')
                                         <small>*{{ $message }}</small>
                                         <br><br>
@@ -124,7 +128,8 @@
                     @if ($trabajo_asignado->estado == 'Asignado')
                         <button type="submit" class="btn btn-dark btn-lg" id="btn1" disabled >Comenzar</button>  
                     @elseif($trabajo_asignado->estado == 'En Proceso')
-                            <button type="submit" class="btn btn-danger btn-lg" id="btn1" disabled>Terminar</button>
+                            
+                    <button type="submit" class="btn btn-danger btn-lg" id="btn1" disabled>Terminar</button>
                         
                     @endif
 
@@ -158,12 +163,16 @@ function initMap() {
     latCliente= document.getElementById("latitud2").value;
     longCliente = document.getElementById("longitud2").value;
 
-    console.log(longCliente);
     
-  map = new google.maps.Map(document.getElementById("mapa"), {
+    
+
+ 
+ map = new google.maps.Map(document.getElementById("mapa"), {
     center:new google.maps.LatLng(latCliente,longCliente),
     zoom: 13,
   });
+
+
 
   const svgMarker = {
     path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
@@ -174,11 +183,15 @@ function initMap() {
     scale: 2,
     anchor: new google.maps.Point(15, 30),
   };
-
+  
   marcadorCliente = new google.maps.Marker({
     map: map,
     position: new google.maps.LatLng(latCliente,longCliente),
   }); 
+  infoWindowCliente = new google.maps.InfoWindow();
+  infoWindowCliente.setPosition(new google.maps.LatLng(latCliente,longCliente) );
+  infoWindowCliente.setContent("Ubicacion del cliente.");
+  infoWindowCliente.open(map);
 
   mark = new google.maps.Marker({
     map: map,
@@ -187,7 +200,7 @@ function initMap() {
     icon:svgMarker,
   });
 
-  infoWindow = new google.maps.InfoWindow();
+  infoWindowTecnico = new google.maps.InfoWindow();
 
   /* const locationButton = document.createElement("button"); */
 const locationButton = document.getElementById("btn2");
@@ -210,9 +223,9 @@ const esUbicacionCercana = document.getElementById('es_ubicacion_cercana');
             lng: position.coords.longitude,
           };
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Ubicacion Actual.");
-          infoWindow.open(map);
+          infoWindowTecnico.setPosition(pos);
+          infoWindowTecnico.setContent("Ubicacion Actual.");
+          infoWindowTecnico.open(map);
           map.setCenter(pos);
           mark.setPosition(pos);
           document.getElementById("latitud").value=roundToTwo(pos.lat) ;
@@ -221,6 +234,7 @@ const esUbicacionCercana = document.getElementById('es_ubicacion_cercana');
          
           if (compararUbicaciones(latCliente,longCliente,pos.lat,pos.lng, 0.002)) {
             buttonComenzar.disabled = false;
+            esUbicacionCercana.value = 1;
           }
           console.log(compararUbicaciones(latCliente,longCliente,pos.lat,pos.lng, 0.002));
 	      /* var bounds = new google.maps.LatLng(

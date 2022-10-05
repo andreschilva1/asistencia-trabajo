@@ -16,7 +16,7 @@ class TrabajoAsignadoClienteController extends Controller
      */
     public function index()
     {
-        $trabajos_asignados = trabajosAsignado::userActualCLientes()->get();
+        $trabajos_asignados = trabajosAsignado::trabajosAsignadosTecnicoActual()->get();
         return view('Trabajos_asignados_tecnicos.index',compact('trabajos_asignados'));
     }
 

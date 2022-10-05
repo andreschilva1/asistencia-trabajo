@@ -52,11 +52,12 @@ class trabajosAsignado extends Model
     }
 
     // devuelve los trabajos y los datos de todos los clientes
-    public static function userActualCLientes()
+    public static function trabajosAsignadosTecnicoActual()
     {
         $usuarioActual = Auth::user()->id;
         return trabajosAsignado::join('users', 'users.id', 'trabajos_asignados.clientes_id')->
-        select('trabajos_asignados.*', 'users.name')->where('tecnicos_id',$usuarioActual);
+        select('trabajos_asignados.*', 'users.name')->where('tecnicos_id',$usuarioActual)->
+        where('trabajos_asignados.estado','<>','Completado');
     }
 
     public static function trabajosCompletadosTecnicoActual()

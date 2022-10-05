@@ -92,7 +92,7 @@
                             <td>{{ $notificacionLeida->data['time'] }}</td>
                             <td>
             
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
 
                                         <div class="form-group">
                                             <div class="form-check">
@@ -100,7 +100,7 @@
                                                 <label class="form-check-label">No Leida</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                             </td>
                         </tr>
                     @endforeach

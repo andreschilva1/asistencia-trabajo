@@ -46,7 +46,13 @@
                             <td>{{ $trabajo_asignado->Fecha}}</td>
                             <td>{{ $trabajo_asignado->horas->horaInicio }}</td>
                             <td>{{ $trabajo_asignado->horas->horaFin}}</td>
-                            <td><button class="btn btn-danger btn-sm" disabled>{{ $trabajo_asignado->estado}}</button></td>
+                            <td>
+                                @if ($trabajo_asignado->estado == "Asignado")
+                                    <button class="btn btn-warning btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
+                                @elseif($trabajo_asignado->estado == "En Proceso")
+                                    <button class="btn btn-danger btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
+                                 @endif
+                                </td>
                             <td>
                                 <form action="{{route('trabajos_asignados.destroy', $trabajo_asignado)}}" method="post">
                                     @csrf

@@ -51,8 +51,6 @@
                                     <button class="btn btn-warning btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
                                 @elseif($trabajo_asignado->estado == "En Proceso")
                                     <button class="btn btn-danger btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
-                                @elseif($trabajo_asignado->estado == "Completado")
-                                    <button class="btn btn-success btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
                                 @endif
                                 
                             </td>

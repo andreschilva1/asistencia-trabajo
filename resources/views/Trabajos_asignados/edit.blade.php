@@ -150,6 +150,7 @@
         </div>
 
     </div>
+    <button type="button" id="obtener_ubicacion" class="btn btn-dark"></button>
 @stop
 
 @section('css')
@@ -195,44 +196,80 @@
     }
 </script> --}}
 <script>
-    let map;
-  var pines=[];
-  function addMarcador(location){
-    
-    var pin = new google.maps.Marker({
-    position:location,
-    map:map,
-    animation:google.maps.Animation.DROP
-    });
-    document.getElementById("latitud").value=location.lat();
-    document.getElementById("longitud").value=location.lng();
-    console.log("latitud",location.lat());
-    console.log("longitud",location.lng());
-    for(var i in pines){
-      pines[i].setMap(null);
-    }
-
-    pines.push(pin);
-
+   
+    function initMap() {
+      var myOptions = {
+          zoom:14,
+          center:new google.maps.LatLng(-17.7817528,-63.1810015),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          
+      };
+      
+      var map = new google.maps.Map(document.getElementById('mapa'),myOptions)
+      
+      var pin = new google.maps.Marker({
+      position:new google.maps.LatLng(-17.7817528,-63.1810015),
+      map:map,
+      animation: google.maps.Animation.DROP,
+      });
+  
+      map.addListener('click',function(event){
+          pin.setPosition(event.latLng);
+          document.getElementById("latitud").value=event.latLng.lat() ;
+          document.getElementById("longitud").value=event.latLng.lng();
+      });
+  
+  
+      infoWindow = new google.maps.InfoWindow();
+  
+      /* const locationButton = document.createElement("button"); */
+      const locationButton = document.getElementById("obtener_ubicacion");
+  
+      locationButton.textContent = "Obtener Mi Ubicacion";
+      locationButton.classList.add("custom-map-control-button");
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+      locationButton.addEventListener("click", () => {
+      
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+          (position) => {
+              const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              };
+  
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("Ubicacion Actual.");
+              infoWindow.open(map);
+              map.setCenter(pos);
+              pin.setPosition(pos);
+              document.getElementById("latitud").value=pos.lat ;
+              document.getElementById("longitud").value=pos.lng;
+  
+          },
+          () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+          }
+          );
+      } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+      }
+      });
+  
+  
+   }  
+  
+   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+    infoWindow.open(map);
   }
-  function initMap() {
-    var myOptions = {
-        zoom:14,
-        center:new google.maps.LatLng(-17.7817528,-63.1810015),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById('mapa'),myOptions)
-    map.addListener('click',function(event){
-      addMarcador(event.latLng);
-    });
-    var pin = new google.maps.Marker({
-    position:new google.maps.LatLng(-17.7817528,-63.1810015),
-    map:map,
-    title: "Hola Mundo"
-    });
-    pines.push(pin);
-
- }  
-</script>
+  </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZH368gsA1Bnnn0BcY7SJBHpxeD2j5gG8&language=es-419&callback=initMap"></script>
 @stop
