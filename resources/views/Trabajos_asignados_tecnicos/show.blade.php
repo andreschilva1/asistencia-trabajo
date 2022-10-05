@@ -252,12 +252,12 @@ const esUbicacionCercana = document.getElementById('es_ubicacion_cercana');
 
         },
         () => {
-          handleLocationError(true, infoWindow, map.getCenter());
+          handleLocationError(true, infoWindowTecnico, map.getCenter());
         }
       );
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, infoWindowTecnico, map.getCenter());
     }
   });
 
@@ -300,8 +300,8 @@ function roundToTwo(num) {
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
+    infoWindowTecnico.setPosition(pos);
+    infoWindowTecnico.setContent(
     browserHasGeolocation
       ? "Error: The Geolocation service failed."
       : "Error: Your browser doesn't support geolocation."
