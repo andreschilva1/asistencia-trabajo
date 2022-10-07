@@ -41,7 +41,7 @@
                             <td>{{ $usuario->name }}</td>
                             <td>{{ $usuario->email }}</td>
                             <td>{{ $usuario->getRoleNames()[0] }}</td>
-                            <td>
+                            <td class=" text-right" >
                                 <form action="{{ route('users.delete', $usuario) }}" method="post">
                                     @csrf
                                     @method('delete')

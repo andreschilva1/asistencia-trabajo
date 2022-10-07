@@ -25,50 +25,55 @@ class ControlAsistenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request , trabajosAsignado $trabajo_asignado )
+    public function create(Request $request, trabajosAsignado $trabajo_asignado)
     {
-        /* dd($request->es_ubicacion_cercana); */
+        $hora_actual = Carbon::now()->format('H:i:s');
         if ($request->es_ubicacion_cercana == 1) {
-            if ($trabajo_asignado->estado == 'Asignado') {
-                $controlAsistencia = new controlAsistencia();
-                $controlAsistencia->trabajos_asignados_id = $trabajo_asignado->id;
-                $controlAsistencia->horaInicio = Carbon::now()->format('H:i:s');
-                $controlAsistencia->horaFin= '00:00:00';
-                $controlAsistencia->latitud = $request->latitud;
-                $controlAsistencia->longitud = $request->longitud;
-                $controlAsistencia->save();
-        
-                $trabajo_asignado->estado ='En Proceso';
-                $trabajo_asignado->save();
-                
-               } elseif ($trabajo_asignado->estado == 'En Proceso') {
-        
-                $controlAsistenciaActual = controlAsistencia::join('trabajos_asignados','trabajos_asignados.id','trabajos_asignados_id' )->
-               select('control_asistencias.*')->where('trabajos_asignados_id',$trabajo_asignado->id)->where('tecnicos_id',$trabajo_asignado->tecnicos_id)->first();
-        
-               
-               /*  dd( $controlAsistenciaActual); */
-                
-                //actualizando la hora de finalizacion del trabajo 
-        
-                $controlAsistenciaActual->horaFin = Carbon::now()->format('H:i:s');
-                $controlAsistenciaActual->latitud = $request->latitud;
-                $controlAsistenciaActual->longitud = $request->longitud;
-                $controlAsistenciaActual->save();
-        
-        
-                //actualizando el estado del trabajo asignado
-                $trabajo_asignado->estado ='Completado';
-                $trabajo_asignado->save();
-        
-               }
+            if ($hora_actual >= $trabajo_asignado->horas->horaInicio && 
+                $hora_actual<=  $trabajo_asignado->horas->horaFin) {
+
+                if ($trabajo_asignado->estado == 'Asignado') {
+                    $controlAsistencia = new controlAsistencia();
+                    $controlAsistencia->trabajos_asignados_id = $trabajo_asignado->id;
+                    $controlAsistencia->horaInicio = $hora_actual;
+                    $controlAsistencia->horaFin = '00:00:00';
+                    $controlAsistencia->latitud = $request->latitud;
+                    $controlAsistencia->longitud = $request->longitud;
+                    $controlAsistencia->save();
+
+                    $trabajo_asignado->estado = 'En Proceso';
+                    $trabajo_asignado->save();
+                } elseif ($trabajo_asignado->estado == 'En Proceso') {
+
+                    $controlAsistenciaActual = controlAsistencia::join('trabajos_asignados', 'trabajos_asignados.id', 'trabajos_asignados_id')->select('control_asistencias.*')->where('trabajos_asignados_id', $trabajo_asignado->id)->where('tecnicos_id', $trabajo_asignado->tecnicos_id)->first();
+
+
+                    /*  dd( $controlAsistenciaActual); */
+
+                    //actualizando la hora de finalizacion del trabajo 
+
+                    $controlAsistenciaActual->horaFin = $hora_actual;
+                    $controlAsistenciaActual->latitud = $request->latitud;
+                    $controlAsistenciaActual->longitud = $request->longitud;
+                    $controlAsistenciaActual->save();
+
+
+                    //actualizando el estado del trabajo asignado
+                    $trabajo_asignado->estado = 'Completado';
+                    $trabajo_asignado->save();
+                }
+
+            } else {
+                return redirect()->back()->with('error', 'Debe empezar a la hora asignada');
+            }
+
+        } else {
+            return redirect()->back()->with('error', 'se encuentra muy lejos de la ubicacion');
         }
-        
-       
-       
-       return redirect()->route('trabajos_asignados_tecnicos.index');
-       
-        
+
+
+
+        return redirect()->route('trabajos_asignados_tecnicos.index');
     }
 
     /**
