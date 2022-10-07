@@ -53,7 +53,7 @@
                                     <button class="btn btn-danger btn-sm" disabled>{{ $trabajo_asignado->estado}}</button>
                                  @endif
                                 </td>
-                            <td>
+                            <td class=" text-right">
                                 <form action="{{route('trabajos_asignados.destroy', $trabajo_asignado)}}" method="post">
                                     @csrf
                                     @method('delete')

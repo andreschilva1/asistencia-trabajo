@@ -13,6 +13,13 @@
         </div>
 
         <div class="card-body">
+            @if (session('error'))
+            <div class="alert alert-danger" role= "error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{session('error')}}
+            </div>
+            @endif
+            
             <form action="{{route('trabajos_asignados.insertar')}}" method="post">
                 @csrf
                 <div class="row">

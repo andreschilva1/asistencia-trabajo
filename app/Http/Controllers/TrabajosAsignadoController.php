@@ -90,6 +90,8 @@ class TrabajosAsignadoController extends Controller
             $trabajo_asignado->save();
 
             User::find($trabajo_asignado->tecnicos_id)->notify(new InvoicePaid($trabajo_asignado));
+        }else{
+            return redirect()->back()->with('error', '¡Error! esta hora y fehca ya fue asignada al mismo tecnico ');
         }
        
 
@@ -126,7 +128,7 @@ class TrabajosAsignadoController extends Controller
         $trabajos = trabajo::all();
         $horas = hora::all();
         
-        return view('Trabajos_asignados.edit',compact('old_cliente','trabajo_asignado','clientes','tecnicos','trabajos','horas'));
+        return view('El trabajos_asignados.edit',compact('old_cliente','trabajo_asignado','clientes','tecnicos','trabajos','horas'));
     }
 
     /**
@@ -171,6 +173,8 @@ class TrabajosAsignadoController extends Controller
             $trabajo_asignado->longitud = $request->longitud;
             
             $trabajo_asignado->save();
+        }else{
+            return redirect()->back()->with('error', '¡Error! esta hora y fehca ya fue asignada al mismo tecnico');
         }
         
 

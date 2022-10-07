@@ -43,7 +43,7 @@
                             <td>{{ $categoria->descripcion}}</td>
                             <td>{{ $categoria->created_at }}</td>
                             <td>{{ $categoria->updated_at }}</td>
-                            <td>
+                            <td class=" text-right">
                                 <form action="{{route('categorias.delete',$categoria)}}" method="post">
                                     @csrf
                                     @method('delete')

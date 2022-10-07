@@ -45,7 +45,7 @@
                             <td>{{ $trabajo->categorias->nombre}}</td>
                             <td>{{ $trabajo->created_at }}</td>
                             <td>{{ $trabajo->updated_at}}</td>
-                            <td>
+                            <td class=" text-right">
                                 <form action="{{route('trabajos.destroy', $trabajo)}}" method="post">
                                     @csrf
                                     @method('delete')

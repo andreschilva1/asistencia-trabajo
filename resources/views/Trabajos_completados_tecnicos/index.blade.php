@@ -44,7 +44,7 @@
                             <td>{{ $trabajo_completado->Fecha}}</td>
                             <td>{{ $trabajo_completado->control_asistencias->horaInicio }}</td>
                             <td>{{ $trabajo_completado->control_asistencias->horaFin}}</td>
-                            <td>
+                            <td >
                                 <button class="btn btn-success btn-sm" disabled>{{ $trabajo_completado->estado}}</button>
                             </td>
                             <td>

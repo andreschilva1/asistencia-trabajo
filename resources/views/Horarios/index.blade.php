@@ -43,7 +43,7 @@
                             <td>{{ $hora->horaFin}}</td>
                             <td>{{ $hora->created_at }}</td>
                             <td>{{ $hora->updated_at }}</td>
-                            <td>
+                            <td class=" text-right">
                                 <form action="{{route('horas.delete',$hora)}}" method="post">
                                     @csrf
                                     @method('delete')
