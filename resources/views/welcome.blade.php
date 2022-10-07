@@ -20,7 +20,13 @@
     <!-- include the site stylesheet -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7COswald:400,700" rel="stylesheet">   
     
-    
+    <!-- PWA  -->
+	<meta name="theme-color" content="#6777ef"/>
+	<link rel="apple-touch-icon" href="{{ asset('images/icon-192x192.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('images/icon-256x256.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('images/icon-384x384.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('images/icon-512x512.png') }}">
+	<link rel="manifest" href="{{ asset('/manifest.json') }}">
     
 	<!-- include the site stylesheet -->
 	@yield('head')
@@ -318,6 +324,17 @@
 <script src="{{ secure_asset('assets/js/jquery.main.js')}}"></script>
 <!-- include jQuery -->
 <script src="{{ secure_asset('assets/js/particles.js')}}"></script>
+
+<script src="{{ asset('/sw.js') }}"></script>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
+
+
 <div id="style-changer" data-src="style-changer.html"></div>
     </div>
 </body>
