@@ -16,7 +16,7 @@
 
 
 @section('content')
-   {{--  <div class="card">
+    {{--  <div class="card">
         
     </div> --}}
 
@@ -42,14 +42,16 @@
                             <td>{{ $usuario->email }}</td>
                             <td>{{ $usuario->getRoleNames()[0] }}</td>
                             <td>
-                                <form action="{{route('users.delete', $usuario)}}" method="post">
+                                <form action="{{ route('users.delete', $usuario) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('users.edit',$usuario)}}" class="btn btn-dark btn-sm">Editar<a>
-                                    {{-- @can('editar usuario')
+                                    <a href="{{ route('users.edit', $usuario) }}" class="btn btn-dark btn-sm">Editar<a>
+                                            {{-- @can('editar usuario')
                                     @endcan --}}
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
-                                    {{-- @can('eliminar usuario')
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                value="Borrar">Eliminar</button>
+                                            {{-- @can('eliminar usuario')
                                     @endcan --}}
                                 </form>
                             </td>
@@ -78,8 +80,15 @@
         $('#example').DataTable({
             language: {
                 url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json',
-            },  
+            },
+            responsive: {
+                details: {
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'ui table'
+                    })
+                }
+            }
+
         });
-        
     </script>
 @stop

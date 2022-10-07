@@ -127,12 +127,26 @@
             language: {
                 url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json',
             },
+            responsive: {
+                details: {
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'ui table'
+                    })
+                }
+            }
         });
 
         $('#tabla2').DataTable({
             language: {
                 url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json',
             },
+            responsive: {
+                details: {
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'ui table'
+                    })
+                }
+            }
         });
     </script>
 @stop
