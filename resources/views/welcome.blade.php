@@ -22,10 +22,10 @@
     
     <!-- PWA  -->
 	<meta name="theme-color" content="#6777ef"/>
-	<link rel="apple-touch-icon" href="{{ asset('images/icon-192x192.png') }}">
-	<link rel="apple-touch-icon" href="{{ asset('images/icon-256x256.png') }}">
-	<link rel="apple-touch-icon" href="{{ asset('images/icon-384x384.png') }}">
-	<link rel="apple-touch-icon" href="{{ asset('images/icon-512x512.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('/images/icon-192x192.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('/images/icon-256x256.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('/images/icon-384x384.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('/images/icon-512x512.png') }}">
 	<link rel="manifest" href="{{ asset('/manifest.json') }}">
     
 	<!-- include the site stylesheet -->
