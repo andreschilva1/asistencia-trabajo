@@ -24,19 +24,19 @@
     
 	<!-- include the site stylesheet -->
 	@yield('head')
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/plugins.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/plugins.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/style.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/style.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/colors.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/colors.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/responsive.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
 	<!-- include the site stylesheet -->
-	<link rel="stylesheet" href="{{ secure_asset('assets/css/gridgum.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/gridgum.css')}}">
 	<style class="color_css"></style>
     
 </head>
@@ -48,8 +48,8 @@
                 <!-- Logo of the page -->
                 <div class="logo">
                     <a href="#">
-                        <img src="{{ secure_asset('assets/images/serviteclogo1.png')}}" alt="Mono" class="light img-responsive " width="150" height="150">
-                        <img src="{{ secure_asset('assets/images/servitecLogoDark.png')}}" alt="mono" class="dark img-responsive " width="150" height="150">
+                        <img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="Mono" class="light img-responsive " width="150" height="150">
+                        <img src="{{ asset('assets/images/servitecLogoDark.png')}}" alt="mono" class="dark img-responsive " width="150" height="150">
                     </a>
                 </div>
                 <!-- Logo of the page end -->
@@ -103,7 +103,7 @@
 						<header class="heading-holder col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 							{{-- <h1><span class="text-small"></span>IMPORTADORA ONLIBO!</h1> --}}
 							<div class="aligncenter">
-								<img src="{{ secure_asset('assets/images/serviteclogo1.png')}}" alt="image description m-top" class="img-responsive" width="700" height="400">
+								<img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="image description m-top" class="img-responsive" width="700" height="400">
 							</div>
 							<p></p>
 						</header>
@@ -122,42 +122,42 @@
 			<ul class="features-list">
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/speech-bubble.png')}}" width="54" height="52" alt="icon id-card" class="img-responsive">
+						<img src="{{ asset('assets/images/speech-bubble.png')}}" width="54" height="52" alt="icon id-card" class="img-responsive">
 					</div>
 					<h3><a href="#">Best CRM System</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
 				</li>
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/time-left.png')}}" width="56" height="50" alt="icon clock" class="img-responsive">
+						<img src="{{ asset('assets/images/time-left.png')}}" width="56" height="50" alt="icon clock" class="img-responsive">
 					</div>
 					<h3><a href="#">Time Tracking</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
 				</li>
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/download.png')}}" width="51" height="45" alt="icon notes" class="img-responsive">
+						<img src="{{ asset('assets/images/download.png')}}" width="51" height="45" alt="icon notes" class="img-responsive">
 					</div>
 					<h3><a href="#">Download easily</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
 				</li>
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/line-chart.png')}}" width="52" height="60" alt="icon calculator" class="img-responsive">
+						<img src="{{ asset('assets/images/line-chart.png')}}" width="52" height="60" alt="icon calculator" class="img-responsive">
 					</div>
 					<h3><a href="#">Financial Charts</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
 				</li>
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/medal.png')}}" width="52" height="60" alt="icon cleaning" class="img-responsive">
+						<img src="{{ asset('assets/images/medal.png')}}" width="52" height="60" alt="icon cleaning" class="img-responsive">
 					</div>
 					<h3><a href="#">Badges for customer</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
 				</li>
 				<li>
 					<div class="icon-holder">
-						<img src="{{ secure_asset('assets/images/calendar.png')}}" width="49" height="51" alt="icon calandar" class="img-responsive">
+						<img src="{{ asset('assets/images/calendar.png')}}" width="49" height="51" alt="icon calandar" class="img-responsive">
 					</div>
 					<h3><a href="#">Daily Calendar</a></h3>
 					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
@@ -212,7 +212,7 @@
 				<!-- Descr of the page end -->
 				<!-- img holder of the page -->
 				<div class="img-holder sameheight col-xs-12 col-sm-6">
-					<img src="{{ secure_asset('assets/images/imac.png')}}" alt="image description" class="img-responsive">
+					<img src="{{ asset('assets/images/imac.png')}}" alt="image description" class="img-responsive">
 				</div>
 				<!-- img holder of the page end -->
 			</div>
@@ -221,7 +221,7 @@
 		<!-- Video block of the page -->
 		{{-- <aside class="video-block" data-scroll-index="3">
 			<div class="video overlay">
-				<img src="{{ secure_asset('assets/images/2600-430.jpg')}}" alt="image description" class="img-responsive">
+				<img src="{{ asset('assets/images/2600-430.jpg')}}" alt="image description" class="img-responsive">
 				<a href="https://www.youtube.com/watch?v=XjDh_5ZH9wQ?autoplay=1" class="ico-play lightbox fancybox.iframe"></a>
 			</div>
 		</aside> --}}
@@ -232,7 +232,7 @@
 		{{-- <section class="trial-block container" data-scroll-index="4">
 			<div class="row">
 				<div class="alignleft">
-					<img src="{{ secure_asset('assets/images/665.jpg')}}" alt="image description" class="img-responsive">
+					<img src="{{ asset('assets/images/665.jpg')}}" alt="image description" class="img-responsive">
 				</div>
 				<div class="col-xs-12 col-sm-6 descr">
 					<div class="align">
@@ -257,14 +257,14 @@
 				<div class="col-xs-12">
 					<!-- Logos list of the page -->
 					<ul class="list-unstyled line-slider">
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner05.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner05.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
-						<li><a href="#"><img src="{{ secure_asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner05.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner05.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner06.png')}}" alt="image description" class="img-responsive"></a></li>
+						<li><a href="#"><img src="{{ asset('assets/images/partner04.png')}}" alt="image description" class="img-responsive"></a></li>
 					</ul>
 					<!-- Logos list of the page end -->
 				</div>
@@ -279,7 +279,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 text-center col-sm-6 col-sm-offset-3">
-						<div class="logo"><a href="#"><img src="{{ secure_asset('assets/images/serviteclogo1.png')}}" alt="mono"></a></div>
+						<div class="logo"><a href="#"><img src="{{ asset('assets/images/serviteclogo1.png')}}" alt="mono"></a></div>
 						<p></p>
 						<!-- Social Networks of the page -->
 						<ul class="social-networks">
@@ -307,17 +307,17 @@
 	<!-- Back Top of the page -->
 	<span id="back-top" class="fa fa-angle-up"></span>
 	<div id="loader" class="loader-holder">
-		<div class="block"><img src="{{secure_asset('assets/images/svg/hearts.svg')}}" width="100" alt="loader"></div>
+		<div class="block"><img src="{{asset('assets/images/svg/hearts.svg')}}" width="100" alt="loader"></div>
 	</div>
 <!-- Wrapper of the page end -->
 <!-- include jQuery -->
-<script src="{{ secure_asset('assets/js/jquery.js')}}"></script>
+<script src="{{ asset('assets/js/jquery.js')}}"></script>
 <!-- include jQuery -->
-<script src="{{ secure_asset('assets/js/plugins.js')}}"></script>
+<script src="{{ asset('assets/js/plugins.js')}}"></script>
 <!-- include jQuery -->
-<script src="{{ secure_asset('assets/js/jquery.main.js')}}"></script>
+<script src="{{ asset('assets/js/jquery.main.js')}}"></script>
 <!-- include jQuery -->
-<script src="{{ secure_asset('assets/js/particles.js')}}"></script>
+<script src="{{ asset('assets/js/particles.js')}}"></script>
 <div id="style-changer" data-src="style-changer.html"></div>
     </div>
 </body>
